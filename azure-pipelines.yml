@@ -1,0 +1,20 @@
+trigger:
+- main
+
+pool: 'WDKubePool'
+
+
+steps:
+- task: Kubernetes@1
+  displayName: 'kubectl login'
+  inputs:
+    connectionType: 'Kubernetes Service Connection'
+    kubernetesServiceEndpoint: 'wddev-k8s service connection'
+    namespace: 'walletdoc2'
+    command: login
+
+- task: Bash@3
+  inputs:
+    filePath: 'test-folder/configure-test-portal.sh'
+    arguments: 'walletdoc2 ingress.yml service .yml deployment .yml'
+    workingDirectory: "test-folder/"
