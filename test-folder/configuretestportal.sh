@@ -14,7 +14,7 @@ kubectl create namespace $NAMESPACE --dry-run=client -o yaml | kubectl apply -f 
 
 # Create ingress, service and deployment
 kubectl apply -f $INGRESS_NAME --namespace $NAMESPACE
-kubectl apply -f service.yml --namespace $NAMESPACE
-kubectl apply -f deployment.yml --namespace $NAMESPACE
+kubectl apply -f $SERVICE_NAME --namespace $NAMESPACE
+kubectl apply -f $DEPLOYMENT_NAME --namespace $NAMESPACE
 
  
