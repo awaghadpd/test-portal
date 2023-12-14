@@ -1,5 +1,5 @@
 trigger:
-- main
+- dev
 
 pool: 'WDKubePool'
 
@@ -12,9 +12,13 @@ steps:
     kubernetesServiceEndpoint: 'wddev-k8s service connection'
     namespace: 'default'
     command: login
-
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: 'sed -i ''s/\r$//'' ''./configuretestportal.sh'''
+    workingDirectory: "test-folder/"
 - task: Bash@3
   inputs:
     filePath: 'test-folder/configuretestportal.sh'
-    arguments: 'walletdoc2 ingress.yml service.yml deployment.yml'
+    arguments: 'walletdoc2 ingress.yml service .yml deployment .yml'
     workingDirectory: "test-folder/"
