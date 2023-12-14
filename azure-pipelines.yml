@@ -20,5 +20,5 @@ steps:
 - task: Bash@3
   inputs:
     filePath: 'test-folder/configuretestportal.sh'
-    arguments: 'walletdoc2 ingress.yml service.yml deployment.yml'
+    arguments: 'walletdoc2 ingress.yml service.yml'
     workingDirectory: "test-folder/"
